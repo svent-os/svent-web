@@ -1,0 +1,10 @@
+*.deb
+*.buildinfo
+*.changes
+.debhelper/
+debhelper-build-stamp
+*.substvars
+**/debian/files
+**/debian/sv-*/
+tools/*/bin/
+*.asc
