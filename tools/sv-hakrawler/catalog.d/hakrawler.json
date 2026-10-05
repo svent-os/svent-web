@@ -1,0 +1,1 @@
+{"schema":1,"name":"hakrawler","group":"web","description":"Fast web crawler for endpoint discovery","packaging":"svent","package":"sv-hakrawler","executables":["hakrawler"],"official_source":"https://github.com/hakluke/hakrawler","version_policy":"svent-packaged","functional_test":["hakrawler","--version"],"functional_test_any_exit":true}
