@@ -1,0 +1,2 @@
+bin/nuclei usr/bin/
+catalog.d/nuclei.json usr/share/svent/catalog.d/

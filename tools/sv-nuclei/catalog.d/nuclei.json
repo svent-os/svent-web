@@ -1,0 +1,1 @@
+{"schema":1,"name":"nuclei","group":"web","description":"Template-based vulnerability scanner","packaging":"svent","package":"sv-nuclei","executables":["nuclei"],"official_source":"https://github.com/projectdiscovery/nuclei","version_policy":"svent-packaged","functional_test":["nuclei","--version"],"functional_test_any_exit":true}
