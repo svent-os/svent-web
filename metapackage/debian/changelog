@@ -1,3 +1,9 @@
+sv-tools-web (0.1.7) unstable; urgency=medium
+
+  * Add sv-gobuster
+
+ -- z1rov <fabian@zirov.net>  Mon, 05 Oct 2026 18:57:54 -0400
+
 sv-tools-web (0.1.6) unstable; urgency=medium
 
   * Add sv-ffuf

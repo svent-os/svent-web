@@ -1,0 +1,13 @@
+Source: sv-gobuster
+Section: metapackages
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: sv-gobuster
+Architecture: all
+Depends: svent-core, gobuster, ${misc:Depends}
+Description: Svent web tool: gobuster
+ Installs gobuster and registers it in the Svent catalog and menu.

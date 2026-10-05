@@ -1,0 +1,1 @@
+{"schema":1,"name":"gobuster","group":"web","description":"Directory, DNS and vhost brute-forcing tool","packaging":"debian","package":"gobuster","executables":["gobuster"],"official_source":"https://github.com/OJ/gobuster","version_policy":"follow-debian-testing","functional_test":["gobuster","--version"],"functional_test_any_exit":true}
