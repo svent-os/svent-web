@@ -1,0 +1,2 @@
+bin/waybackurls usr/bin/
+catalog.d/waybackurls.json usr/share/svent/catalog.d/

@@ -1,0 +1,1 @@
+{"schema":1,"name":"waybackurls","group":"web","description":"Fetch archived URLs from the Wayback Machine","packaging":"svent","package":"sv-waybackurls","executables":["waybackurls"],"official_source":"https://github.com/tomnomnom/waybackurls","version_policy":"svent-packaged","functional_test":["waybackurls","--version"],"functional_test_any_exit":true}
