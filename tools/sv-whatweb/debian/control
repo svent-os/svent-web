@@ -1,0 +1,13 @@
+Source: sv-whatweb
+Section: metapackages
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: sv-whatweb
+Architecture: all
+Depends: svent-core, whatweb, ${misc:Depends}
+Description: Svent web tool: whatweb
+ Installs whatweb and registers it in the Svent catalog and menu.

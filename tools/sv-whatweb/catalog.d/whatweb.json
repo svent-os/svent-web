@@ -1,0 +1,1 @@
+{"schema":1,"name":"whatweb","group":"web","description":"Web technology fingerprinting tool","packaging":"debian","package":"whatweb","executables":["whatweb"],"official_source":"https://github.com/urbanadventurer/WhatWeb","version_policy":"follow-debian-testing","functional_test":["whatweb","--version"],"functional_test_any_exit":true}
