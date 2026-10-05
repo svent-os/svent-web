@@ -1,0 +1,1 @@
+{"schema":1,"name":"sqlmap","group":"web","description":"SQL injection detection and exploitation tool","packaging":"debian","package":"sqlmap","executables":["sqlmap"],"official_source":"https://sqlmap.org","version_policy":"follow-debian-testing","functional_test":["sqlmap","--version"],"functional_test_any_exit":true}

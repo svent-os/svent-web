@@ -1,3 +1,9 @@
+sv-tools-web (0.1.5) unstable; urgency=medium
+
+  * Add sv-sqlmap
+
+ -- z1rov <fabian@zirov.net>  Mon, 05 Oct 2026 18:57:30 -0400
+
 sv-tools-web (0.1.4) unstable; urgency=medium
 
   * Add sv-hakrawler
