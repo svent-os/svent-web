@@ -1,0 +1,13 @@
+Source: sv-ffuf
+Section: metapackages
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: sv-ffuf
+Architecture: all
+Depends: svent-core, ffuf, ${misc:Depends}
+Description: Svent web tool: ffuf
+ Installs ffuf and registers it in the Svent catalog and menu.

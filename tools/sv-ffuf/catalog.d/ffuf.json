@@ -1,0 +1,1 @@
+{"schema":1,"name":"ffuf","group":"web","description":"Fast web fuzzer","packaging":"debian","package":"ffuf","executables":["ffuf"],"official_source":"https://github.com/ffuf/ffuf","version_policy":"follow-debian-testing","functional_test":["ffuf","--version"],"functional_test_any_exit":true}
