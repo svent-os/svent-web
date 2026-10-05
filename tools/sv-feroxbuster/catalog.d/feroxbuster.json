@@ -1,0 +1,1 @@
+{"schema":1,"name":"feroxbuster","group":"web","description":"Fast recursive content discovery tool","packaging":"svent","package":"sv-feroxbuster","executables":["feroxbuster"],"official_source":"https://github.com/epi052/feroxbuster","version_policy":"svent-packaged","functional_test":["feroxbuster","--version"],"functional_test_any_exit":true}

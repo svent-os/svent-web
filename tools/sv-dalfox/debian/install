@@ -1,0 +1,2 @@
+bin/dalfox usr/bin/
+catalog.d/dalfox.json usr/share/svent/catalog.d/

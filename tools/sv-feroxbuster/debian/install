@@ -1,0 +1,2 @@
+bin/feroxbuster usr/bin/
+catalog.d/feroxbuster.json usr/share/svent/catalog.d/

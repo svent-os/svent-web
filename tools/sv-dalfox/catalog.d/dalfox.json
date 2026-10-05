@@ -1,0 +1,1 @@
+{"schema":1,"name":"dalfox","group":"web","description":"XSS scanning and parameter analysis tool","packaging":"svent","package":"sv-dalfox","executables":["dalfox"],"official_source":"https://github.com/hahwul/dalfox","version_policy":"svent-packaged","functional_test":["dalfox","--version"],"functional_test_any_exit":true}

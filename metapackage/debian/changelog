@@ -1,3 +1,9 @@
+sv-tools-web (0.1.1) unstable; urgency=medium
+
+  * Add sv-dalfox
+
+ -- z1rov <fabian@zirov.net>  Mon, 05 Oct 2026 18:51:25 -0400
+
 sv-tools-web (0.1.0) unstable; urgency=medium
 
   * Initial release.
