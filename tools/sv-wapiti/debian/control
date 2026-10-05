@@ -1,0 +1,13 @@
+Source: sv-wapiti
+Section: metapackages
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: sv-wapiti
+Architecture: all
+Depends: svent-core, wapiti, ${misc:Depends}
+Description: Svent web tool: wapiti
+ Installs wapiti and registers it in the Svent catalog and menu.
