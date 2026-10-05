@@ -1,0 +1,1 @@
+{"schema":1,"name":"wfuzz","group":"web","description":"Web application fuzzer","packaging":"debian","package":"wfuzz","executables":["wfuzz"],"official_source":"https://github.com/xmendez/wfuzz","version_policy":"follow-debian-testing","functional_test":["wfuzz","--version"],"functional_test_any_exit":true}

@@ -1,0 +1,13 @@
+Source: sv-wfuzz
+Section: metapackages
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: sv-wfuzz
+Architecture: all
+Depends: svent-core, wfuzz, ${misc:Depends}
+Description: Svent web tool: wfuzz
+ Installs wfuzz and registers it in the Svent catalog and menu.
