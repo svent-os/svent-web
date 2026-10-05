@@ -1,0 +1,13 @@
+Source: sv-dirb
+Section: metapackages
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: sv-dirb
+Architecture: all
+Depends: svent-core, dirb, ${misc:Depends}
+Description: Svent web tool: dirb
+ Installs dirb and registers it in the Svent catalog and menu.

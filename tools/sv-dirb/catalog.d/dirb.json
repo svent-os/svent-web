@@ -1,0 +1,1 @@
+{"schema":1,"name":"dirb","group":"web","description":"Web content discovery tool","packaging":"debian","package":"dirb","executables":["dirb"],"official_source":"https://sourceforge.net/projects/dirb","version_policy":"follow-debian-testing","functional_test":["dirb","--version"],"functional_test_any_exit":true}
