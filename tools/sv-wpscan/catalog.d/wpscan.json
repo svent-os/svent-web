@@ -1,0 +1,1 @@
+{"schema":1,"name":"wpscan","group":"web","description":"WordPress security scanner","packaging":"debian","package":"wpscan","executables":["wpscan"],"official_source":"https://wpscan.com","version_policy":"follow-debian-testing","functional_test":["wpscan","--version"],"functional_test_any_exit":true}

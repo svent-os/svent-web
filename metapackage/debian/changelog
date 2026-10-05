@@ -1,3 +1,9 @@
+sv-tools-web (0.1.10) unstable; urgency=medium
+
+  * Add sv-wpscan
+
+ -- z1rov <fabian@zirov.net>  Mon, 05 Oct 2026 18:58:56 -0400
+
 sv-tools-web (0.1.9) unstable; urgency=medium
 
   * Add sv-whatweb

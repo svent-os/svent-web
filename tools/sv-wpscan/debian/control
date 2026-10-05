@@ -1,0 +1,13 @@
+Source: sv-wpscan
+Section: metapackages
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: sv-wpscan
+Architecture: all
+Depends: svent-core, wpscan, ${misc:Depends}
+Description: Svent web tool: wpscan
+ Installs wpscan and registers it in the Svent catalog and menu.
