@@ -1,0 +1,13 @@
+Source: sv-wafw00f
+Section: metapackages
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: sv-wafw00f
+Architecture: all
+Depends: svent-core, wafw00f, ${misc:Depends}
+Description: Svent web tool: wafw00f
+ Installs wafw00f and registers it in the Svent catalog and menu.

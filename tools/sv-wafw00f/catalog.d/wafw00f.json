@@ -1,0 +1,1 @@
+{"schema":1,"name":"wafw00f","group":"web","description":"Web application firewall fingerprinting tool","packaging":"debian","package":"wafw00f","executables":["wafw00f"],"official_source":"https://github.com/EnableSecurity/wafw00f","version_policy":"follow-debian-testing","functional_test":["wafw00f","--version"],"functional_test_any_exit":true}
