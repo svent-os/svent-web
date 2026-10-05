@@ -8,6 +8,6 @@ Rules-Requires-Root: no
 
 Package: sv-tools-web
 Architecture: all
-Depends: svent-core, sv-nuclei, sv-dalfox, ${misc:Depends}
+Depends: svent-core, sv-nuclei, sv-dalfox, sv-gau, ${misc:Depends}
 Description: Svent web tool group
  Installs every Svent tool in the web category.

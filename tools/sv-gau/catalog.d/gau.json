@@ -1,0 +1,1 @@
+{"schema":1,"name":"gau","group":"web","description":"Fetch known URLs from public sources","packaging":"svent","package":"sv-gau","executables":["gau"],"official_source":"https://github.com/lc/gau","version_policy":"svent-packaged","functional_test":["gau","--version"],"functional_test_any_exit":true}

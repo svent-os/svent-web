@@ -1,0 +1,2 @@
+bin/gau usr/bin/
+catalog.d/gau.json usr/share/svent/catalog.d/
