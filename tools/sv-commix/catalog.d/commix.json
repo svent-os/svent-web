@@ -1,0 +1,1 @@
+{"schema":1,"name":"commix","group":"web","description":"Command injection detection and exploitation tool","packaging":"debian","package":"commix","executables":["commix"],"official_source":"https://github.com/commixproject/commix","version_policy":"follow-debian-testing","functional_test":["commix","--version"],"functional_test_any_exit":true}
