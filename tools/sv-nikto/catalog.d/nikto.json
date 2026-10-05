@@ -1,0 +1,1 @@
+{"schema":1,"name":"nikto","group":"web","description":"Web server security scanner","packaging":"debian","package":"nikto","executables":["nikto"],"official_source":"https://github.com/sullo/nikto","version_policy":"follow-debian-testing","functional_test":["nikto","--version"],"functional_test_any_exit":true}
