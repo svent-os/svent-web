@@ -1,3 +1,33 @@
 #!/usr/bin/make -f
+PKG = sv-wpscan
+EXE = wpscan
+GEM = wpscan
+VER = 4.1.0
+PREFIX = /opt/$(PKG)
+DESTDIR = $(CURDIR)/debian/$(PKG)
+
 %:
 	dh $@
+
+override_dh_auto_configure:
+override_dh_auto_build:
+override_dh_auto_test:
+
+override_dh_auto_install:
+	rm -rf $(CURDIR)/.gem
+	GEM_HOME=$(CURDIR)/.gem gem install --no-document --install-dir $(CURDIR)/.gem $(GEM) -v $(VER)
+	mkdir -p $(DESTDIR)$(PREFIX)
+	cp -a $(CURDIR)/.gem/. $(DESTDIR)$(PREFIX)/
+	mkdir -p $(DESTDIR)/usr/bin
+	printf '#!/bin/sh\nexport GEM_HOME=%s GEM_PATH=%s\nexec ruby %s/bin/%s "$$@"\n' "$(PREFIX)" "$(PREFIX)" "$(PREFIX)" "$(EXE)" > $(DESTDIR)/usr/bin/$(EXE)
+	chmod 755 $(DESTDIR)/usr/bin/$(EXE)
+	mkdir -p $(DESTDIR)/usr/share/svent/catalog.d
+	cp catalog.d/$(EXE).json $(DESTDIR)/usr/share/svent/catalog.d/
+
+override_dh_auto_clean:
+	rm -rf $(CURDIR)/.gem
+
+override_dh_strip:
+override_dh_dwz:
+override_dh_shlibdeps:
+	dh_shlibdeps || true

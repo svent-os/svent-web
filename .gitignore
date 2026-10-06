@@ -10,3 +10,4 @@ tools/*/bin/
 *.asc
 tools/*/.venv/
 tools/*/.src/
+tools/*/.gem/

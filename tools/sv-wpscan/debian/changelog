@@ -1,5 +1,5 @@
-sv-wpscan (0.1.0) unstable; urgency=medium
+sv-wpscan (4.1.0) unstable; urgency=medium
 
-  * Initial release.
+  * Package wpscan 4.1.0 into an isolated Ruby GEM_HOME (vendored).
 
- -- z1rov <fabian@zirov.net>  Mon, 05 Oct 2026 18:58:56 -0400
+ -- z1rov <fabian@zirov.net>  Mon, 05 Oct 2026 20:41:44 -0400

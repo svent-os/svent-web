@@ -1,9 +1,9 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: sv-wpscan
-Source: https://wpscan.com
+Source: https://github.com/wpscanteam/wpscan
 
 Files: *
 Copyright: 2026 z1rov <fabian@zirov.net>
-License: GPL-3.0-or-later
- On Debian systems the full license text is in
- /usr/share/common-licenses/GPL-3.
+License: WPScan-Public-Source-License
+ WPScan is distributed under the WPScan Public Source License.
+ See https://github.com/wpscanteam/wpscan/blob/master/LICENSE
