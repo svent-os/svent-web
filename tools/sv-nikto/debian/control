@@ -1,13 +1,14 @@
 Source: sv-nikto
-Section: metapackages
+Section: net
 Priority: optional
 Maintainer: z1rov <fabian@zirov.net>
-Build-Depends: debhelper-compat (= 13)
+Build-Depends: debhelper-compat (= 13), git, ca-certificates
 Standards-Version: 4.7.0
-Rules-Requires-Root: no
 
 Package: sv-nikto
 Architecture: all
-Depends: svent-core, nikto, ${misc:Depends}
-Description: Svent web tool: nikto
- Installs nikto and registers it in the Svent catalog and menu.
+Depends: svent-core, perl, libnet-ssleay-perl, libio-socket-ssl-perl, libxml-writer-perl, libjson-pp-perl, ${misc:Depends}
+Description: Svent web tool: nikto (vendored)
+ Web server vulnerability scanner, bundled under /opt/sv-nikto with its own
+ LW2 library. The required Perl modules come from Debian as shared,
+ co-installable system libraries, so nothing else is affected.
