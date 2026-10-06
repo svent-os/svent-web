@@ -8,3 +8,4 @@ debhelper-build-stamp
 **/debian/sv-*/
 tools/*/bin/
 *.asc
+tools/*/.venv/
