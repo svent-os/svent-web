@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: sv-burpsuite
+Source: https://portswigger.net/burp
+
+Files: *
+Copyright: 2026 z1rov <fabian@zirov.net>
+License: Svent-packaging
+ This package contains only an installer and launcher written for Svent OS.
+ Burp Suite itself is downloaded from PortSwigger and is subject to the
+ PortSwigger End User License Agreement: https://portswigger.net/burp

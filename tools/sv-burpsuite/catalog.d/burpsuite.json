@@ -1,0 +1,1 @@
+{"schema":1,"name":"burpsuite","group":"web","description":"Burp Suite Community web security testing suite","packaging":"svent","package":"sv-burpsuite","executables":["burpsuite"],"official_source":"https://portswigger.net/burp","version_policy":"svent-packaged","functional_test":["sh","-c","test -f /opt/sv-burpsuite/burpsuite.jar"],"functional_test_any_exit":false}

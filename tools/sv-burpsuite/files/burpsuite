@@ -1,0 +1,7 @@
+#!/bin/sh
+JAR=/opt/sv-burpsuite/burpsuite.jar
+if [ ! -f "$JAR" ]; then
+  echo "Burp Suite is not downloaded. Run: sudo apt install --reinstall sv-burpsuite" >&2
+  exit 1
+fi
+exec java -jar "$JAR" "$@"

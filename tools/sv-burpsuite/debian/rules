@@ -1,0 +1,11 @@
+#!/usr/bin/make -f
+PKG = sv-burpsuite
+DESTDIR = $(CURDIR)/debian/$(PKG)
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	install -D -m755 files/burpsuite $(DESTDIR)/usr/bin/burpsuite
+	install -D -m644 files/sv-burpsuite.desktop $(DESTDIR)/usr/share/applications/sv-burpsuite.desktop
+	install -D -m644 catalog.d/burpsuite.json $(DESTDIR)/usr/share/svent/catalog.d/burpsuite.json

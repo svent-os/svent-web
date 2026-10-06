@@ -1,0 +1,5 @@
+sv-burpsuite (1.0.0) unstable; urgency=medium
+
+  * Downloader + desktop launcher for Burp Suite Community.
+
+ -- z1rov <fabian@zirov.net>  Mon, 05 Oct 2026 21:02:30 -0400

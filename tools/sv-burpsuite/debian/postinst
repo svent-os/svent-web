@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+DIR=/opt/sv-burpsuite
+JAR="$DIR/burpsuite.jar"
+ICON=/usr/share/pixmaps/sv-burpsuite.png
+URL="https://portswigger.net/burp/releases/download?product=community&type=Jar"
+case "$1" in
+  configure)
+    mkdir -p "$DIR"
+    echo "sv-burpsuite: downloading Burp Suite Community from PortSwigger..."
+    if curl -fSL "$URL" -o "$JAR.part"; then
+      mv -f "$JAR.part" "$JAR"
+      echo "sv-burpsuite: saved to $JAR"
+    else
+      rm -f "$JAR.part"
+      echo "sv-burpsuite: WARNING could not download Burp (no network?). Reinstall when online: sudo apt install --reinstall sv-burpsuite" >&2
+    fi
+    if [ -f "$JAR" ] && command -v unzip >/dev/null 2>&1; then
+      name=$(unzip -Z1 "$JAR" 2>/dev/null | grep -iE '(burp|icon).*\.png$' | head -1 || true)
+      if [ -n "$name" ]; then
+        tmp=$(mktemp -d)
+        (cd "$tmp" && unzip -o "$JAR" "$name" >/dev/null 2>&1) && cp "$tmp/$name" "$ICON" 2>/dev/null || true
+        rm -rf "$tmp"
+      fi
+    fi
+    command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database -q || true
+    ;;
+esac
+#DEBHELPER#
+exit 0
