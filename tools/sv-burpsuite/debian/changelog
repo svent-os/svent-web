@@ -1,3 +1,9 @@
+sv-burpsuite (1.0.2) unstable; urgency=medium
+
+  * Add --sv-check self-test so the tool validates without launching the GUI.
+
+ -- z1rov <fabian@zirov.net>  Mon, 05 Oct 2026 21:21:36 -0400
+
 sv-burpsuite (1.0.1) unstable; urgency=medium
 
   * Use the real Burp logo (BurpSuite-Container-128) as the launcher icon.

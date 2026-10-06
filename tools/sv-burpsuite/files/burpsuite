@@ -1,5 +1,9 @@
 #!/bin/sh
 JAR=/opt/sv-burpsuite/burpsuite.jar
+if [ "$1" = "--sv-check" ]; then
+  [ -f "$JAR" ] && command -v java >/dev/null 2>&1
+  exit $?
+fi
 if [ ! -f "$JAR" ]; then
   echo "Burp Suite is not downloaded. Run: sudo apt install --reinstall sv-burpsuite" >&2
   exit 1
