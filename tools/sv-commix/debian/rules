@@ -1,3 +1,29 @@
 #!/usr/bin/make -f
+PKG = sv-commix
+EXE = commix
+TAG = v4.1
+REPO = https://github.com/commixproject/commix
+PREFIX = /opt/$(PKG)
+DESTDIR = $(CURDIR)/debian/$(PKG)
+
 %:
 	dh $@
+
+override_dh_auto_configure:
+override_dh_auto_build:
+override_dh_auto_test:
+
+override_dh_auto_install:
+	rm -rf $(CURDIR)/.src
+	git clone --depth 1 --branch $(TAG) $(REPO) $(CURDIR)/.src
+	rm -rf $(CURDIR)/.src/.git
+	mkdir -p $(DESTDIR)$(PREFIX)
+	cp -a $(CURDIR)/.src/. $(DESTDIR)$(PREFIX)/
+	mkdir -p $(DESTDIR)/usr/bin
+	printf '#!/bin/sh\nexec python3 %s/commix.py "$$@"\n' "$(PREFIX)" > $(DESTDIR)/usr/bin/$(EXE)
+	chmod 755 $(DESTDIR)/usr/bin/$(EXE)
+	mkdir -p $(DESTDIR)/usr/share/svent/catalog.d
+	cp catalog.d/$(EXE).json $(DESTDIR)/usr/share/svent/catalog.d/
+
+override_dh_auto_clean:
+	rm -rf $(CURDIR)/.src

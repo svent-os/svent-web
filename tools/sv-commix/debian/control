@@ -1,13 +1,14 @@
 Source: sv-commix
-Section: metapackages
+Section: net
 Priority: optional
 Maintainer: z1rov <fabian@zirov.net>
-Build-Depends: debhelper-compat (= 13)
+Build-Depends: debhelper-compat (= 13), git, ca-certificates
 Standards-Version: 4.7.0
-Rules-Requires-Root: no
 
 Package: sv-commix
 Architecture: all
-Depends: svent-core, commix, ${misc:Depends}
-Description: Svent web tool: commix
- Installs commix and registers it in the Svent catalog and menu.
+Depends: svent-core, python3, ${misc:Depends}
+Description: Svent web tool: commix (vendored)
+ Automated OS command injection and exploitation tool, bundled under
+ /opt/sv-commix. Pure Python with no external dependencies, so it cannot
+ affect the system Python packages or other tools.

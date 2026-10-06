@@ -9,3 +9,4 @@ debhelper-build-stamp
 tools/*/bin/
 *.asc
 tools/*/.venv/
+tools/*/.src/
