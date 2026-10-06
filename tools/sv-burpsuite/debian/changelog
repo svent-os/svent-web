@@ -1,3 +1,9 @@
+sv-burpsuite (1.0.1) unstable; urgency=medium
+
+  * Use the real Burp logo (BurpSuite-Container-128) as the launcher icon.
+
+ -- z1rov <fabian@zirov.net>  Mon, 05 Oct 2026 21:12:23 -0400
+
 sv-burpsuite (1.0.0) unstable; urgency=medium
 
   * Downloader + desktop launcher for Burp Suite Community.
