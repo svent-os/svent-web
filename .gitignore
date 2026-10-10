@@ -11,3 +11,4 @@ tools/*/bin/
 tools/*/.venv/
 tools/*/.src/
 tools/*/.gem/
+tools/*/.build.*/

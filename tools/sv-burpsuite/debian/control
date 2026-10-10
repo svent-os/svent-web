@@ -7,7 +7,7 @@ Standards-Version: 4.7.0
 
 Package: sv-burpsuite
 Architecture: all
-Depends: svent-core, default-jre, curl, ca-certificates, unzip, ${misc:Depends}
+Depends: svent-core (>= 0.4.3), default-jre (>= 2:1.21), curl, ca-certificates, unzip, ${misc:Depends}
 Description: Svent web tool: Burp Suite Community (downloader)
  Downloads Burp Suite Community Edition from PortSwigger on install and adds
  a desktop launcher. This package ships only the installer and launcher; the

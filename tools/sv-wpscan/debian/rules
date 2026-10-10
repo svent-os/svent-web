@@ -15,11 +15,11 @@ override_dh_auto_test:
 
 override_dh_auto_install:
 	rm -rf $(CURDIR)/.gem
-	GEM_HOME=$(CURDIR)/.gem gem install --no-document --install-dir $(CURDIR)/.gem $(GEM) -v $(VER)
+	GEM_HOME=$(CURDIR)/.gem GEM_PATH=$(CURDIR)/.gem gem install --no-document --install-dir $(CURDIR)/.gem $(GEM) -v $(VER)
 	mkdir -p $(DESTDIR)$(PREFIX)
 	cp -a $(CURDIR)/.gem/. $(DESTDIR)$(PREFIX)/
 	mkdir -p $(DESTDIR)/usr/bin
-	printf '#!/bin/sh\nexport GEM_HOME=%s GEM_PATH=%s\nexec ruby %s/bin/%s "$$@"\n' "$(PREFIX)" "$(PREFIX)" "$(PREFIX)" "$(EXE)" > $(DESTDIR)/usr/bin/$(EXE)
+	printf '#!/bin/sh\nunset RUBYLIB RUBYOPT BUNDLE_GEMFILE BUNDLE_PATH\nexport GEM_HOME=%s GEM_PATH=%s\nexec ruby %s/bin/%s "$$@"\n' "$(PREFIX)" "$(PREFIX)" "$(PREFIX)" "$(EXE)" > $(DESTDIR)/usr/bin/$(EXE)
 	chmod 755 $(DESTDIR)/usr/bin/$(EXE)
 	mkdir -p $(DESTDIR)/usr/share/svent/catalog.d
 	cp catalog.d/$(EXE).json $(DESTDIR)/usr/share/svent/catalog.d/
@@ -30,4 +30,4 @@ override_dh_auto_clean:
 override_dh_strip:
 override_dh_dwz:
 override_dh_shlibdeps:
-	dh_shlibdeps || true
+	dh_shlibdeps

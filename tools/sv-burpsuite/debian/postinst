@@ -1,34 +1,23 @@
 #!/bin/sh
-set -e
-DIR=/opt/sv-burpsuite
-JAR="$DIR/burpsuite.jar"
-ICON=/usr/share/pixmaps/sv-burpsuite.png
-URL="https://portswigger.net/burp/releases/download?product=community&type=Jar"
-case "$1" in
-  configure)
-    mkdir -p "$DIR"
-    echo "sv-burpsuite: downloading Burp Suite Community from PortSwigger..."
-    if curl -fSL "$URL" -o "$JAR.part"; then
-      mv -f "$JAR.part" "$JAR"
-      echo "sv-burpsuite: saved to $JAR"
-    else
-      rm -f "$JAR.part"
-      echo "sv-burpsuite: WARNING could not download Burp (no network?). Reinstall when online: sudo apt install --reinstall sv-burpsuite" >&2
+set -eu
+if [ "$1" = configure ]; then
+    directory=/opt/sv-burpsuite
+    jar="$directory/burpsuite.jar"
+    icon=/usr/share/pixmaps/sv-burpsuite.svg
+    mkdir -p "$directory" /usr/share/pixmaps
+    temporary=$(mktemp -d "$directory/.download.XXXXXX")
+    trap 'rm -rf "$temporary"' EXIT HUP INT TERM
+    if [ ! -s "$jar" ] || ! unzip -tq "$jar" >/dev/null 2>&1; then
+        curl -fL --retry 3 --connect-timeout 30 --max-time 900 'https://portswigger.net/burp/releases/download?product=community&type=Jar' -o "$temporary/burpsuite.jar"
+        unzip -tq "$temporary/burpsuite.jar" >/dev/null
+        install -m 0644 "$temporary/burpsuite.jar" "$jar"
     fi
-    if [ -f "$JAR" ] && command -v unzip >/dev/null 2>&1; then
-      tmp=$(mktemp -d)
-      for cand in \
-        "resources/Browser/ChromiumExtension/images/BurpSuite-Container-128.png" \
-        "resources/Media/splash-community.png"; do
-        if unzip -o "$JAR" "$cand" -d "$tmp" >/dev/null 2>&1; then
-          cp "$tmp/$cand" "$ICON" 2>/dev/null && break
-        fi
-      done
-      rm -rf "$tmp"
+    curl -fL --retry 3 --connect-timeout 30 --max-time 120 'https://portswigger.net/content/images/svg/icons/community.svg' -o "$temporary/icon.svg"
+    grep -q '<svg' "$temporary/icon.svg"
+    install -m 0644 "$temporary/icon.svg" "$icon"
+    rm -f /usr/share/pixmaps/sv-burpsuite.png
+    if command -v update-desktop-database >/dev/null 2>&1; then
+        update-desktop-database -q
     fi
-    command -v gtk-update-icon-cache >/dev/null 2>&1 && gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
-    command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database -q || true
-    ;;
-esac
+fi
 #DEBHELPER#
-exit 0

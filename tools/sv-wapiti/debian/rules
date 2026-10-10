@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 PKG = sv-wapiti
-PIP = wapiti3
+PIP = wapiti3==3.3.2
 EXE = wapiti
 PREFIX = /opt/$(PKG)
 DESTDIR = $(CURDIR)/debian/$(PKG)
@@ -15,14 +15,15 @@ override_dh_auto_test:
 override_dh_auto_install:
 	rm -rf $(CURDIR)/.venv
 	python3 -m venv $(CURDIR)/.venv
-	$(CURDIR)/.venv/bin/pip install --no-cache-dir --upgrade pip wheel
-	$(CURDIR)/.venv/bin/pip install --no-cache-dir $(PIP)
+	$(CURDIR)/.venv/bin/python -m pip install --no-cache-dir $(PIP)
+	$(CURDIR)/.venv/bin/python -m pip freeze --all > $(CURDIR)/.venv/requirements-installed.txt
 	mkdir -p $(DESTDIR)$(PREFIX)
 	cp -a $(CURDIR)/.venv/. $(DESTDIR)$(PREFIX)/
 	find $(DESTDIR)$(PREFIX)/bin -type f -exec sed -i "1s|$(CURDIR)/.venv|$(PREFIX)|" {} +
 	sed -i "s|$(CURDIR)/.venv|$(PREFIX)|g" $(DESTDIR)$(PREFIX)/pyvenv.cfg
 	mkdir -p $(DESTDIR)/usr/bin
-	ln -sf $(PREFIX)/bin/$(EXE) $(DESTDIR)/usr/bin/$(EXE)
+	printf '#!/bin/sh\nunset PYTHONHOME PYTHONPATH PYTHONUSERBASE\nexport PYTHONNOUSERSITE=1 VIRTUAL_ENV=%s\nexec %s/bin/python %s/bin/%s "$$@"\n' "$(PREFIX)" "$(PREFIX)" "$(PREFIX)" "$(EXE)" > $(DESTDIR)/usr/bin/$(EXE)
+	chmod 0755 $(DESTDIR)/usr/bin/$(EXE)
 	mkdir -p $(DESTDIR)/usr/share/svent/catalog.d
 	cp catalog.d/$(EXE).json $(DESTDIR)/usr/share/svent/catalog.d/
 
@@ -32,4 +33,4 @@ override_dh_auto_clean:
 override_dh_strip:
 override_dh_dwz:
 override_dh_shlibdeps:
-	dh_shlibdeps || true
+	dh_shlibdeps

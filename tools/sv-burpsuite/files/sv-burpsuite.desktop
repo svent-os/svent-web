@@ -6,5 +6,5 @@ Comment=Web application security testing
 Exec=/usr/bin/burpsuite
 Icon=sv-burpsuite
 Terminal=false
-Categories=Network;Security;
+Categories=Network;Security;X-Svent-web;
 StartupNotify=true

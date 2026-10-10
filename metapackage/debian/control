@@ -8,6 +8,6 @@ Rules-Requires-Root: no
 
 Package: sv-tools-web
 Architecture: all
-Depends: svent-core, sv-nuclei, sv-dalfox, sv-gau, sv-waybackurls, sv-hakrawler, sv-sqlmap, sv-ffuf, sv-gobuster, sv-nikto, sv-whatweb, sv-wpscan, sv-wfuzz, sv-commix, sv-wapiti, sv-dirb, sv-wafw00f, sv-feroxbuster, ${misc:Depends}
+Depends: svent-core (>= 0.4.3), sv-burpsuite, sv-commix, sv-dalfox, sv-dirb, sv-feroxbuster, sv-ffuf, sv-gau, sv-gobuster, sv-hakrawler, sv-nikto, sv-nuclei, sv-sqlmap, sv-wafw00f, sv-wapiti, sv-waybackurls, sv-wfuzz, sv-whatweb, sv-wpscan, ${misc:Depends}
 Description: Svent web tool group
  Installs every Svent tool in the web category.

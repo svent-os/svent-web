@@ -1,3 +1,9 @@
+sv-nikto (2.6.2) unstable; urgency=medium
+
+  * Correct build dependencies and application integration.
+
+ -- z1rov <fabian@zirov.net>  Sat, 10 Oct 2026 15:00:00 -0500
+
 sv-nikto (2.6.1) unstable; urgency=medium
 
   * Package nikto 2.6.1 as a vendored git checkout.
