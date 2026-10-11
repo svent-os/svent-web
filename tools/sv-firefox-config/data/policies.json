@@ -1,5 +1,17 @@
 {
   "policies": {
+    "Bookmarks": [
+      {
+        "Title": "SventOS",
+        "URL": "https://sventos.zirov.net",
+        "Placement": "toolbar"
+      },
+      {
+        "Title": "zirov",
+        "URL": "https://zirov.net",
+        "Placement": "toolbar"
+      }
+    ],
     "DisableTelemetry": true,
     "DisableFirefoxStudies": true,
     "DisablePocket": true,

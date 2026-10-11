@@ -1,3 +1,9 @@
+sv-firefox-config (0.1.3) unstable; urgency=medium
+
+  * Add SventOS and zirov bookmarks to the Firefox bookmarks toolbar.
+
+ -- z1rov <fabian@zirov.net>  Sun, 11 Oct 2026 18:30:00 -0500
+
 sv-firefox-config (0.1.2) unstable; urgency=medium
 
   * Keep Firefox configuration as an internal Web package component.
