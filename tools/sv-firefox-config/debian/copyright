@@ -1,0 +1,18 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: sv-firefox-config
+Source: https://github.com/svent-os/svent-web
+
+Files: *
+Copyright: 2026 z1rov <fabian@zirov.net>
+License: GPL-3.0-or-later
+ On Debian systems the full license text is in
+ /usr/share/common-licenses/GPL-3.
+
+Comment:
+ This package contains Svent configuration and launcher code only.
+ Firefox is supplied by Debian. Extensions are downloaded by Firefox from
+ Mozilla Add-ons and retain their original signatures and licenses.
+ uBlock Origin: GPL-3.0-only.
+ FoxyProxy Standard: GPL-2.0-only.
+ Mozilla Multi-Account Containers: MPL-2.0.
+ Extension license links are included in extension-licenses.json.

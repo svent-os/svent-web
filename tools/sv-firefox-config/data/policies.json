@@ -1,0 +1,254 @@
+{
+  "policies": {
+    "DisableTelemetry": true,
+    "DisableFirefoxStudies": true,
+    "DisablePocket": true,
+    "NetworkPrediction": false,
+    "SearchSuggestEnabled": false,
+    "HttpsOnlyMode": "enabled",
+    "EnableTrackingProtection": {
+      "Value": true,
+      "Locked": false,
+      "Cryptomining": true,
+      "Fingerprinting": true
+    },
+    "UserMessaging": {
+      "ExtensionRecommendations": false,
+      "FeatureRecommendations": false,
+      "SkipOnboarding": true,
+      "Locked": false
+    },
+    "Preferences": {
+      "privacy.globalprivacycontrol.enabled": {
+        "Value": true,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "network.http.speculative-parallel-limit": {
+        "Value": 0,
+        "Status": "default",
+        "Type": "number"
+      },
+      "network.dns.disablePrefetch": {
+        "Value": true,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "network.dns.disablePrefetchFromHTTPS": {
+        "Value": true,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "network.prefetch-next": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.urlbar.speculativeConnect.enabled": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.places.speculativeConnect.enabled": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.urlbar.quicksuggest.enabled": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.search.suggest.enabled": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.urlbar.suggest.searches": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.urlbar.suggest.quicksuggest.sponsored": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.urlbar.suggest.quicksuggest.nonsponsored": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.newtabpage.activity-stream.showSponsoredTopSites": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.newtabpage.activity-stream.showSponsored": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.newtabpage.activity-stream.feeds.telemetry": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.newtabpage.activity-stream.telemetry": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.discovery.enabled": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.ml.enable": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.ml.chat.enabled": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.ml.linkPreview.enabled": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.tabs.groups.smart.enabled": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "extensions.htmlaboutaddons.recommendations.enabled": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "privacy.userContext.enabled": {
+        "Value": true,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "privacy.userContext.ui.enabled": {
+        "Value": true,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "pdfjs.enableScripting": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "security.tls.enable_0rtt_data": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "security.OCSP.enabled": {
+        "Value": 1,
+        "Status": "locked",
+        "Type": "number"
+      },
+      "security.ssl.enable_ocsp_stapling": {
+        "Value": true,
+        "Status": "locked",
+        "Type": "boolean"
+      },
+      "browser.safebrowsing.malware.enabled": {
+        "Value": true,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.safebrowsing.phishing.enabled": {
+        "Value": true,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.safebrowsing.downloads.enabled": {
+        "Value": true,
+        "Status": "default",
+        "Type": "boolean"
+      },
+      "browser.contentblocking.category": {
+        "Value": "strict",
+        "Status": "default",
+        "Type": "string"
+      }
+    },
+    "ExtensionSettings": {
+      "uBlock0@raymondhill.net": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi",
+        "default_area": "navbar",
+        "private_browsing": true
+      },
+      "foxyproxy@eric.h.jung": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/foxyproxy-standard/latest.xpi",
+        "default_area": "navbar",
+        "private_browsing": true
+      },
+      "@testpilot-containers": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi",
+        "default_area": "navbar"
+      }
+    },
+    "3rdparty": {
+      "Extensions": {
+        "foxyproxy@eric.h.jung": {
+          "mode": "disable",
+          "sync": false,
+          "autoBackup": false,
+          "passthrough": "localhost, 127.0.0.1, ::1",
+          "theme": "",
+          "container": {},
+          "commands": {},
+          "data": [
+            {
+              "active": true,
+              "title": "Burp Suite - Local HTTP",
+              "type": "http",
+              "hostname": "127.0.0.1",
+              "port": "8080",
+              "username": "",
+              "password": "",
+              "cc": "",
+              "city": "",
+              "color": "#ff6266",
+              "pac": "",
+              "pacString": "",
+              "proxyDNS": false,
+              "include": [],
+              "exclude": [],
+              "tabProxy": []
+            },
+            {
+              "active": true,
+              "title": "Local SOCKS5",
+              "type": "socks5",
+              "hostname": "127.0.0.1",
+              "port": "1080",
+              "username": "",
+              "password": "",
+              "cc": "",
+              "city": "",
+              "color": "#81a1c1",
+              "pac": "",
+              "pacString": "",
+              "proxyDNS": true,
+              "include": [],
+              "exclude": [],
+              "tabProxy": []
+            }
+          ]
+        }
+      }
+    }
+  }
+}

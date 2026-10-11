@@ -1,0 +1,15 @@
+Source: sv-firefox-config
+Section: web
+Priority: optional
+Maintainer: z1rov <fabian@zirov.net>
+Build-Depends: debhelper-compat (= 13), python3
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: sv-firefox-config
+Architecture: all
+Depends: svent-core (>= 0.4.5), firefox-esr (>= 128.8), python3, ${misc:Depends}
+Description: Svent Firefox privacy defaults and Web proxy presets
+ Configures Firefox ESR with privacy policies, signed extensions downloaded
+ from Mozilla Add-ons and managed local Burp Suite and SOCKS5 proxy presets.
+ Preserves Firefox's default appearance and existing browser profiles.

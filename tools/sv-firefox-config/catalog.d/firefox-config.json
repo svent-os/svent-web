@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "name": "firefox-config",
+  "group": "web",
+  "description": "Firefox privacy defaults, signed extensions and managed local proxy presets",
+  "packaging": "svent",
+  "package": "sv-firefox-config",
+  "executables": [
+    "firefox-config"
+  ],
+  "official_source": "https://firefox-admin-docs.mozilla.org/",
+  "version_policy": "svent-packaged",
+  "functional_test": [
+    "firefox-config",
+    "--check"
+  ],
+  "functional_test_any_exit": false,
+  "desktop_file": "sv-firefox-config.desktop"
+}

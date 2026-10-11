@@ -1,0 +1,4 @@
+files/firefox-config usr/bin/
+files/sv-firefox-config.desktop usr/share/applications/
+data/*.json usr/share/svent/firefox/
+catalog.d/firefox-config.json usr/share/svent/catalog.d/

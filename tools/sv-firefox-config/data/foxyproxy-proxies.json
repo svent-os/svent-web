@@ -1,0 +1,47 @@
+{
+  "mode": "disable",
+  "sync": false,
+  "autoBackup": false,
+  "passthrough": "localhost, 127.0.0.1, ::1",
+  "theme": "",
+  "container": {},
+  "commands": {},
+  "data": [
+    {
+      "active": true,
+      "title": "Burp Suite - Local HTTP",
+      "type": "http",
+      "hostname": "127.0.0.1",
+      "port": "8080",
+      "username": "",
+      "password": "",
+      "cc": "",
+      "city": "",
+      "color": "#ff6266",
+      "pac": "",
+      "pacString": "",
+      "proxyDNS": false,
+      "include": [],
+      "exclude": [],
+      "tabProxy": []
+    },
+    {
+      "active": true,
+      "title": "Local SOCKS5",
+      "type": "socks5",
+      "hostname": "127.0.0.1",
+      "port": "1080",
+      "username": "",
+      "password": "",
+      "cc": "",
+      "city": "",
+      "color": "#81a1c1",
+      "pac": "",
+      "pacString": "",
+      "proxyDNS": true,
+      "include": [],
+      "exclude": [],
+      "tabProxy": []
+    }
+  ]
+}

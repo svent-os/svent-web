@@ -1,0 +1,26 @@
+[
+  {
+    "name": "ublock-origin",
+    "id": "uBlock0@raymondhill.net",
+    "license": "GPL-3.0-only",
+    "license_url": "https://spdx.org/licenses/GPL-3.0-only.html",
+    "official_addon": "https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/",
+    "distribution": "Downloaded by Firefox from Mozilla Add-ons; not bundled in this package"
+  },
+  {
+    "name": "foxyproxy-standard",
+    "id": "foxyproxy@eric.h.jung",
+    "license": "GPL-2.0-only",
+    "license_url": "https://spdx.org/licenses/GPL-2.0-only.html",
+    "official_addon": "https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/",
+    "distribution": "Downloaded by Firefox from Mozilla Add-ons; not bundled in this package"
+  },
+  {
+    "name": "multi-account-containers",
+    "id": "@testpilot-containers",
+    "license": "MPL-2.0",
+    "license_url": "https://www.mozilla.org/MPL/2.0/",
+    "official_addon": "https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/",
+    "distribution": "Downloaded by Firefox from Mozilla Add-ons; not bundled in this package"
+  }
+]

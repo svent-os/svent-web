@@ -1,0 +1,240 @@
+#!/usr/bin/python3
+import argparse
+import copy
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+import uuid
+
+
+MISSING = object()
+
+
+def read_json(path):
+    if not path.exists():
+        return {}
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise ValueError(f"Expected a JSON object: {path}")
+    return value
+
+
+def atomic_json(path, value, mode=0o644):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.is_symlink():
+        raise ValueError(f"Refusing to replace a symbolic link: {path}")
+    descriptor, name = tempfile.mkstemp(prefix=".svent-firefox-", dir=path.parent)
+    temporary = Path(name)
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
+            json.dump(value, stream, indent=2, ensure_ascii=False)
+            stream.write("\n")
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.chmod(temporary, mode)
+        os.replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def flatten(value, prefix=()):
+    for key, item in value.items():
+        path = (*prefix, key)
+        if isinstance(item, dict) and item:
+            yield from flatten(item, path)
+        else:
+            yield path, item
+
+
+def get_path(value, path):
+    node = value
+    for key in path:
+        if not isinstance(node, dict) or key not in node:
+            return MISSING
+        node = node[key]
+    return node
+
+
+def put_path(value, path, item):
+    node = value
+    for key in path[:-1]:
+        child = node.setdefault(key, {})
+        if not isinstance(child, dict):
+            raise ValueError(f"Existing policy has an incompatible value: {'.'.join(path)}")
+        node = child
+    node[path[-1]] = copy.deepcopy(item)
+
+
+def delete_path(value, path):
+    nodes = []
+    node = value
+    for key in path[:-1]:
+        if not isinstance(node, dict) or key not in node:
+            return
+        nodes.append((node, key))
+        node = node[key]
+    if not isinstance(node, dict):
+        return
+    node.pop(path[-1], None)
+    for parent, key in reversed(nodes):
+        if parent[key]:
+            break
+        del parent[key]
+
+
+def restore_owned(value, state):
+    result = copy.deepcopy(value)
+    for entry in state.get("changes", []):
+        path = entry["path"]
+        current = get_path(result, path)
+        if current is MISSING or current != entry["after"]:
+            continue
+        if entry["before_exists"]:
+            put_path(result, path, entry["before"])
+        else:
+            delete_path(result, path)
+    return result
+
+
+class PolicyManager:
+    def __init__(self, root=Path("/")):
+        self.policy_path = root / "etc/firefox/policies/policies.json"
+        self.template_path = root / "usr/share/svent/firefox/policies.json"
+        self.proxies_path = root / "usr/share/svent/firefox/foxyproxy-proxies.json"
+        self.state_directory = root / "var/lib/svent/firefox-config"
+        self.state_path = self.state_directory / "state.json"
+
+    def load_template(self):
+        if not self.template_path.is_file():
+            raise ValueError(f"Missing policy template: {self.template_path}")
+        value = read_json(self.template_path)
+        if not isinstance(value.get("policies"), dict) or not value["policies"]:
+            raise ValueError("The Svent policy template is empty or invalid")
+        return value
+
+    def load_policy(self):
+        if self.policy_path.is_symlink():
+            raise ValueError(f"Refusing to modify a symbolic link: {self.policy_path}")
+        value = read_json(self.policy_path)
+        if "policies" in value and not isinstance(value["policies"], dict):
+            raise ValueError("The existing policies field must be a JSON object")
+        return value
+
+    def apply(self):
+        current = self.load_policy()
+        template = self.load_template()
+        previous_state = read_json(self.state_path)
+        original = restore_owned(current, previous_state)
+        updated = copy.deepcopy(original)
+        changes = []
+        for path, after in flatten(template):
+            before = get_path(original, path)
+            changes.append({"path": list(path), "before_exists": before is not MISSING,
+                            "before": None if before is MISSING else before,
+                            "after": copy.deepcopy(after)})
+            put_path(updated, path, after)
+        self.state_directory.mkdir(parents=True, exist_ok=True)
+        os.chmod(self.state_directory, 0o700)
+        if updated != current and self.policy_path.exists():
+            backup_directory = self.state_directory / "backups"
+            backup_directory.mkdir(exist_ok=True)
+            os.chmod(backup_directory, 0o700)
+            backup = backup_directory / f"policies-{time.time_ns()}-{uuid.uuid4().hex}.json"
+            shutil.copy2(self.policy_path, backup)
+            os.chmod(backup, 0o600)
+        state = {"schema": 1, "changes": changes,
+                 "original_file_existed": previous_state.get("original_file_existed", self.policy_path.exists())}
+        atomic_json(self.state_path, state, 0o600)
+        if updated != current:
+            mode = self.policy_path.stat().st_mode & 0o777 if self.policy_path.exists() else 0o644
+            atomic_json(self.policy_path, updated, mode)
+        print("[+] Firefox configuration applied. Restart Firefox to load the policies.")
+
+    def remove(self):
+        if not self.state_path.exists():
+            return
+        current = self.load_policy()
+        state = read_json(self.state_path)
+        restored = restore_owned(current, state)
+        if restored != current:
+            empty = restored in ({}, {"policies": {}})
+            if empty and not state.get("original_file_existed", True):
+                self.policy_path.unlink(missing_ok=True)
+            else:
+                mode = self.policy_path.stat().st_mode & 0o777 if self.policy_path.exists() else 0o644
+                atomic_json(self.policy_path, restored, mode)
+        self.state_path.unlink(missing_ok=True)
+        print("[+] Svent Firefox policies removed. Existing profiles and backups were preserved.")
+
+    def check(self):
+        current = self.load_policy()
+        expected = self.load_template()
+        errors = [".".join(path) for path, value in flatten(expected)
+                  if get_path(current, path) != value]
+        if errors:
+            raise ValueError("Missing or changed policy values: " + ", ".join(errors))
+        print("[+] Firefox policy files verified. Check about:policies for browser activation.")
+
+    def status(self):
+        self.check()
+        policies = read_json(self.template_path)["policies"]
+        print("Browser: Firefox ESR")
+        print("Appearance: Firefox default")
+        print("Proxy mode: Direct by default; select a managed proxy per tab in FoxyProxy")
+        for extension, values in policies["ExtensionSettings"].items():
+            print(f"Extension: {extension} | {values['installation_mode']}")
+        print("Extension installation happens when Firefox starts and has Internet access.")
+
+
+def open_browser():
+    browser = shutil.which("firefox-esr")
+    if not browser:
+        raise ValueError("Firefox ESR is not installed")
+    os.execv(browser, [browser])
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Firefox privacy defaults and managed Web proxy presets")
+    action = parser.add_mutually_exclusive_group()
+    action.add_argument("--apply", action="store_true", help="Apply system policies as root")
+    action.add_argument("--remove", action="store_true", help="Restore policy values owned by this package as root")
+    action.add_argument("--check", action="store_true", help="Verify the installed policy files")
+    action.add_argument("--status", action="store_true", help="Show the browser configuration")
+    action.add_argument("--export-proxies", metavar="FILE", help="Export editable FoxyProxy presets to a new file")
+    args = parser.parse_args()
+    manager = PolicyManager()
+    try:
+        if args.apply or args.remove:
+            if os.geteuid() != 0:
+                raise ValueError("Run this action as root")
+            import fcntl
+            manager.state_directory.mkdir(parents=True, exist_ok=True)
+            os.chmod(manager.state_directory, 0o700)
+            with (manager.state_directory / "lock").open("a") as lock:
+                fcntl.flock(lock, fcntl.LOCK_EX)
+                manager.apply() if args.apply else manager.remove()
+        elif args.check:
+            manager.check()
+        elif args.status:
+            manager.status()
+        elif args.export_proxies:
+            target = Path(args.export_proxies).expanduser()
+            with target.open("x", encoding="utf-8") as stream:
+                json.dump(read_json(manager.proxies_path), stream, indent=2)
+                stream.write("\n")
+            print(f"[+] FoxyProxy presets exported: {target}")
+        else:
+            open_browser()
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        print(f"[-] {error}", file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

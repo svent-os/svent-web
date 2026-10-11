@@ -1,3 +1,9 @@
+sv-tools-web (0.1.18) unstable; urgency=medium
+
+  * Include Firefox privacy configuration and managed Web proxy presets.
+
+ -- z1rov <fabian@zirov.net>  Sun, 11 Oct 2026 16:00:00 -0500
+
 sv-tools-web (0.1.17) unstable; urgency=medium
 
   * Include all eighteen Web tools, including Burp Suite.
