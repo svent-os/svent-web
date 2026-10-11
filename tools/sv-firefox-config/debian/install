@@ -1,2 +1,4 @@
 files/firefox-config usr/libexec/svent/
+files/svent-firefox.js usr/lib/firefox-esr/defaults/pref/
+files/svent-firefox.cfg usr/lib/firefox-esr/
 data/*.json usr/share/svent/firefox/

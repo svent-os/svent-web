@@ -1,3 +1,11 @@
+sv-firefox-config (0.1.4) unstable; urgency=medium
+
+  * Add Tools, Docs and Community bookmarks with embedded offline icons.
+  * Correct the personal bookmark title to z1rov.
+  * Refresh Svent policy bookmark titles and icons and remove the import widget.
+
+ -- z1rov <fabian@zirov.net>  Sun, 11 Oct 2026 19:00:00 -0500
+
 sv-firefox-config (0.1.3) unstable; urgency=medium
 
   * Add SventOS and zirov bookmarks to the Firefox bookmarks toolbar.

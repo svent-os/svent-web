@@ -9,10 +9,22 @@ License: GPL-3.0-or-later
  /usr/share/common-licenses/GPL-3.
 
 Comment:
- This package contains Svent configuration and launcher code only.
+ This package contains Svent configuration code and embedded bookmark icons.
  Firefox is supplied by Debian. Extensions are downloaded by Firefox from
  Mozilla Add-ons and retain their original signatures and licenses.
  uBlock Origin: GPL-3.0-only.
  FoxyProxy Standard: GPL-2.0-only.
  Mozilla Multi-Account Containers: MPL-2.0.
  Extension license links are included in extension-licenses.json.
+
+Files: data/policies.json
+Copyright: 2026 z1rov <fabian@zirov.net>
+License: GPL-3.0-or-later and SventOS-artwork
+Comment:
+ Policy configuration is GPL-3.0-or-later. Embedded bookmark icons use the
+ SventOS logo from svent-artwork and the favicon from https://zirov.net/favicon.ico.
+ Both are distributed as part of SventOS at the author's request.
+
+License: SventOS-artwork
+ SventOS logo and z1rov favicon. All rights reserved by the author unless
+ a different license is stated. Redistributed as part of SventOS.
