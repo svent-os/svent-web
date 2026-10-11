@@ -1,3 +1,10 @@
+sv-firefox-config (0.1.6) unstable; urgency=medium
+
+  * Remove the mandatory CustomizableUI module import from bookmark initialization.
+  * Use browser window APIs and hide the import widget independently of bookmark updates.
+
+ -- z1rov <fabian@zirov.net>  Sun, 11 Oct 2026 20:00:00 -0500
+
 sv-firefox-config (0.1.5) unstable; urgency=medium
 
   * Initialize bookmark customization through browser window module loading.
