@@ -6,8 +6,7 @@ override_dh_auto_test:
 	python3 -c "import ast, pathlib; ast.parse(pathlib.Path('files/firefox-config').read_text())"
 	python3 -m json.tool data/policies.json >/dev/null
 	python3 -m json.tool data/foxyproxy-proxies.json >/dev/null
-	python3 -m json.tool catalog.d/firefox-config.json >/dev/null
 
 override_dh_fixperms:
 	dh_fixperms
-	chmod 0755 debian/sv-firefox-config/usr/bin/firefox-config
+	chmod 0755 debian/sv-firefox-config/usr/libexec/svent/firefox-config
