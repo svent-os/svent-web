@@ -1,3 +1,10 @@
+sv-firefox-config (0.1.1) unstable; urgency=medium
+
+  * Simplify managed proxy names and enable native dark colors.
+  * Remove the duplicate Firefox Web application launcher.
+
+ -- z1rov <fabian@zirov.net>  Sun, 11 Oct 2026 17:00:00 -0500
+
 sv-firefox-config (0.1.0) unstable; urgency=medium
 
   * Add native Firefox privacy policies and signed extension downloads.

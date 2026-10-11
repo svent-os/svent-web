@@ -9,7 +9,7 @@
   "data": [
     {
       "active": true,
-      "title": "Burp Suite - Local HTTP",
+      "title": "Burp Suite",
       "type": "http",
       "hostname": "127.0.0.1",
       "port": "8080",
@@ -27,7 +27,7 @@
     },
     {
       "active": true,
-      "title": "Local SOCKS5",
+      "title": "SOCKS5",
       "type": "socks5",
       "hostname": "127.0.0.1",
       "port": "1080",

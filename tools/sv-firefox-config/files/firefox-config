@@ -184,7 +184,7 @@ class PolicyManager:
         self.check()
         policies = read_json(self.template_path)["policies"]
         print("Browser: Firefox ESR")
-        print("Appearance: Firefox default")
+        print("Appearance: Native Firefox dark mode")
         print("Proxy mode: Direct by default; select a managed proxy per tab in FoxyProxy")
         for extension, values in policies["ExtensionSettings"].items():
             print(f"Extension: {extension} | {values['installation_mode']}")

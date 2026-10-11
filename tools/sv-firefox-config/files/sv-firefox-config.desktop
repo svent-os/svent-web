@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Firefox Web
-Comment=Firefox ESR with privacy defaults and managed Web proxy presets
-Exec=firefox-config
-Terminal=false
-Icon=firefox-esr
-Categories=X-Svent-web;
-StartupNotify=true

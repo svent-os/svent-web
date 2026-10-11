@@ -178,6 +178,26 @@
         "Value": "strict",
         "Status": "default",
         "Type": "string"
+      },
+      "ui.systemUsesDarkTheme": {
+        "Value": 1,
+        "Status": "locked",
+        "Type": "number"
+      },
+      "browser.theme.toolbar-theme": {
+        "Value": 0,
+        "Status": "locked",
+        "Type": "number"
+      },
+      "browser.theme.content-theme": {
+        "Value": 0,
+        "Status": "locked",
+        "Type": "number"
+      },
+      "browser.theme.native-theme": {
+        "Value": false,
+        "Status": "default",
+        "Type": "boolean"
       }
     },
     "ExtensionSettings": {
@@ -212,7 +232,7 @@
           "data": [
             {
               "active": true,
-              "title": "Burp Suite - Local HTTP",
+              "title": "Burp Suite",
               "type": "http",
               "hostname": "127.0.0.1",
               "port": "8080",
@@ -230,7 +250,7 @@
             },
             {
               "active": true,
-              "title": "Local SOCKS5",
+              "title": "SOCKS5",
               "type": "socks5",
               "hostname": "127.0.0.1",
               "port": "1080",
