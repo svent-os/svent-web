@@ -6,6 +6,7 @@ override_dh_auto_test:
 	python3 -c "import ast, pathlib; ast.parse(pathlib.Path('files/firefox-config').read_text())"
 	python3 -m json.tool data/policies.json >/dev/null
 	python3 -m json.tool data/foxyproxy-proxies.json >/dev/null
+	python3 -m unittest discover -s tests -v
 
 override_dh_fixperms:
 	dh_fixperms

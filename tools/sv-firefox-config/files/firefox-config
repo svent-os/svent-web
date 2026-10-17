@@ -178,6 +178,9 @@ class PolicyManager:
                   if get_path(current, path) != value]
         if errors:
             raise ValueError("Missing or changed policy values: " + ", ".join(errors))
+        managed = get_path(current, ("policies", "3rdparty", "Extensions", "foxyproxy@eric.h.jung"))
+        if managed is not MISSING and managed:
+            raise ValueError("FoxyProxy still has an administrator-managed policy. Review about:policies; editable proxy selection requires removing that policy at its source.")
         print("[+] Firefox policy files verified. Check about:policies for browser activation.")
 
     def status(self):
@@ -185,10 +188,13 @@ class PolicyManager:
         policies = read_json(self.template_path)["policies"]
         print("Browser: Firefox ESR")
         print("Appearance: Native Firefox dark mode")
-        print("Proxy mode: Direct by default; select a managed proxy per tab in FoxyProxy")
+        print("Proxy mode: User-controlled in FoxyProxy; no Svent managed proxy settings")
         for extension, values in policies["ExtensionSettings"].items():
             print(f"Extension: {extension} | {values['installation_mode']}")
         print("Extension installation happens when Firefox starts and has Internet access.")
+        print(f"Editable proxy presets: {self.proxies_path}")
+        print("In FoxyProxy Options, import this file under Settings: Import/Export and click Save.")
+        print("Import is optional. Existing FoxyProxy profiles and custom proxies are not modified by this package.")
 
 
 def open_browser():
@@ -199,7 +205,7 @@ def open_browser():
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Firefox privacy defaults and managed Web proxy presets")
+    parser = argparse.ArgumentParser(description="Firefox privacy defaults and editable Web proxy presets")
     action = parser.add_mutually_exclusive_group()
     action.add_argument("--apply", action="store_true", help="Apply system policies as root")
     action.add_argument("--remove", action="store_true", help="Restore policy values owned by this package as root")

@@ -11,5 +11,5 @@ Architecture: all
 Depends: svent-core (>= 0.4.5), firefox-esr (>= 128.8), python3, ${misc:Depends}
 Description: Svent Firefox privacy defaults and Web proxy presets
  Configures Firefox ESR with privacy policies, signed extensions downloaded
- from Mozilla Add-ons and managed local Burp Suite and SOCKS5 proxy presets.
+ from Mozilla Add-ons and editable Burp Suite and SOCKS5 proxy presets for optional import.
  Preserves Firefox's default appearance and existing browser profiles.

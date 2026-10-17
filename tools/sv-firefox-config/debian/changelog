@@ -1,3 +1,13 @@
+sv-firefox-config (0.1.7) unstable; urgency=medium
+
+  * Stop enforcing FoxyProxy settings through managed extension policies.
+  * Restore package-owned legacy policies during upgrade without editing profiles.
+  * Keep Burp Suite and SOCKS5 presets available for optional editable import.
+  * Report remaining administrator-managed proxy policies in configuration checks.
+  * Test policy migration, custom settings preservation and repeated upgrades.
+
+ -- z1rov <fabian@zirov.net>  Sat, 17 Oct 2026 12:00:00 -0700
+
 sv-firefox-config (0.1.6) unstable; urgency=medium
 
   * Remove the mandatory CustomizableUI module import from bookmark initialization.
